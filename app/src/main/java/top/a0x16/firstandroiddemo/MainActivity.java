@@ -26,7 +26,9 @@ public class MainActivity extends AppCompatActivity {
                 // 隐式Intent
                 Intent intent = new Intent("top.a0x16.activitytest.ACTION_START");
                 intent.addCategory("top.a0x16.activitytest.MY_CATEGORY");
-                startActivity(intent);
+                // 页面间传输数据
+                intent.putExtra("extra_data", "Hello from MainActivity");
+                startActivityForResult(intent, 100);
             }
         });
 
@@ -70,5 +72,18 @@ public class MainActivity extends AppCompatActivity {
             default:
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
+            case 100:
+                if (resultCode == RESULT_OK) {
+                    String data_return = data.getStringExtra("data_return");
+                    Toast.makeText(this, data_return, Toast.LENGTH_LONG).show();
+                }
+                break;
+            default:
+        }
     }
 }
