@@ -1,6 +1,7 @@
 package top.a0x16.firstandroiddemo;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -25,6 +26,17 @@ public class MainActivity extends AppCompatActivity {
                 // 隐式Intent
                 Intent intent = new Intent("top.a0x16.activitytest.ACTION_START");
                 intent.addCategory("top.a0x16.activitytest.MY_CATEGORY");
+                startActivity(intent);
+            }
+        });
+
+        Button btn_uri = findViewById(R.id.btn_uri);
+        btn_uri.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 隐式打开浏览器
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("https://www.baidu.com"));
                 startActivity(intent);
             }
         });
