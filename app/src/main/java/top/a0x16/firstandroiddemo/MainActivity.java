@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
                 // Intent intent = new Intent(MainActivity.this, SecondActivity.class);
                 // 隐式Intent
                 Intent intent = new Intent("top.a0x16.activitytest.ACTION_START");
+                intent.addCategory("top.a0x16.activitytest.MY_CATEGORY");
                 startActivity(intent);
             }
         });

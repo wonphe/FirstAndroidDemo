@@ -19,7 +19,10 @@
         <activity android:name=".SecondActivity">
             <intent-filter>
                 <action android:name="top.a0x16.activitytest.ACTION_START" />
+                <!--默认category-->
                 <category android:name="android.intent.category.DEFAULT" />
+                <!--自定义category-->
+                <category android:name="top.a0x16.activitytest.MY_CATEGORY" />
             </intent-filter>
         </activity>
     </application>
