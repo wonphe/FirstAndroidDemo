@@ -21,7 +21,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // 显式Intent
-                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                // Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                // 隐式Intent
+                Intent intent = new Intent("top.a0x16.activitytest.ACTION_START");
                 startActivity(intent);
             }
         });
