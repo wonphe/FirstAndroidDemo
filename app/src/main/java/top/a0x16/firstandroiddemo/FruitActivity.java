@@ -9,10 +9,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,10 +29,17 @@ public class FruitActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fruit);
         initFruitList();
-        FruitAdapter adapter = new FruitAdapter(FruitActivity.this,
+        FruitAdapter adapter = new FruitAdapter(getApplicationContext(),
                 R.layout.fruit_item, fruitList);
         ListView list_view = findViewById(R.id.list_view);
         list_view.setAdapter(adapter);
+        list_view.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Fruit fruit = fruitList.get(position);
+                Toast.makeText(getApplicationContext(), fruit.getName(), Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     private void initFruitList() {
