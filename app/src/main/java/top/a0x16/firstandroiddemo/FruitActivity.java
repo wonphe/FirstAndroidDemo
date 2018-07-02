@@ -73,7 +73,12 @@ public class FruitActivity extends AppCompatActivity {
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             Fruit fruit = getItem(position);
-            View view = LayoutInflater.from(getContext()).inflate(resourceId, null);
+            View view;
+            if (convertView == null) {
+                view = LayoutInflater.from(getContext()).inflate(resourceId, null);
+            } else {
+                view = convertView;
+            }
             ImageView fruit_image = view.findViewById(R.id.fruit_image);
             TextView fruit_name = view.findViewById(R.id.fruit_name);
             fruit_image.setImageResource(fruit.getImageId());
