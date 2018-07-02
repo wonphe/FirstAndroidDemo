@@ -29,10 +29,13 @@
         <activity android:name=".InnerBrowerActivity">
             <intent-filter tools:ignore="AppLinkUrlError">
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
+
                 <data android:scheme="https" />
             </intent-filter>
         </activity>
+        <activity android:name=".FruitActivity"/>
     </application>
 
 </manifest>
