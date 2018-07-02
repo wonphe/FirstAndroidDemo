@@ -1,26 +1,84 @@
 package top.a0x16.firstandroiddemo;
 
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import top.a0x16.firstandroiddemo.bean.Fruit;
 
 public class FruitActivity extends AppCompatActivity {
-    private String[] data = {"Apple", "Banana", "Orange", "Watermelon", "Pear"
-            , "Grape", "Pineapple", "Strawberry", "Cherry", "Mango"
-            , "Apple", "Banana", "Orange", "Watermelon", "Pear"
-            , "Grape", "Pineapple", "Strawberry", "Cherry", "Mango"};
+    private List<Fruit> fruitList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fruit);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(
-                FruitActivity.this, android.R.layout.simple_list_item_1, data);
+        initFruitList();
+        FruitAdapter adapter = new FruitAdapter(FruitActivity.this,
+                R.layout.fruit_item, fruitList);
         ListView list_view = findViewById(R.id.list_view);
         list_view.setAdapter(adapter);
+    }
+
+    private void initFruitList() {
+        for (int i = 0; i < 2; i++) {
+            Fruit apple = new Fruit("Apple", R.drawable.apple512);
+            fruitList.add(apple);
+            Fruit banana = new Fruit("Banana", R.drawable.banana512);
+            fruitList.add(banana);
+            Fruit orange = new Fruit("Orange", R.drawable.orange512);
+            fruitList.add(orange);
+            Fruit apricot = new Fruit("Apricot", R.drawable.apricot512);
+            fruitList.add(apricot);
+            Fruit pear = new Fruit("Pear", R.drawable.pear512);
+            fruitList.add(pear);
+            Fruit kiwi = new Fruit("Kiwi", R.drawable.kiwi512);
+            fruitList.add(kiwi);
+            Fruit peach = new Fruit("Peach", R.drawable.peach512);
+            fruitList.add(peach);
+            Fruit strawberry = new Fruit("Strawberry", R.drawable.strawberry512);
+            fruitList.add(strawberry);
+            Fruit cherry = new Fruit("Cherry", R.drawable.cherry512);
+            fruitList.add(cherry);
+            Fruit mango = new Fruit("Mango", R.drawable.mango512);
+            fruitList.add(mango);
+            Fruit tomato = new Fruit("Tomato", R.drawable.tomato512);
+            fruitList.add(tomato);
+            Fruit lemon = new Fruit("Lemon", R.drawable.lemon512);
+            fruitList.add(lemon);
+        }
+    }
+
+    private class FruitAdapter extends ArrayAdapter<Fruit> {
+        private int resourceId;
+
+        public FruitAdapter(Context context, int resource, List<Fruit> objects) {
+            super(context, resource, objects);
+            resourceId = resource;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            Fruit fruit = getItem(position);
+            View view = LayoutInflater.from(getContext()).inflate(resourceId, null);
+            ImageView fruit_image = view.findViewById(R.id.fruit_image);
+            TextView fruit_name = view.findViewById(R.id.fruit_name);
+            fruit_image.setImageResource(fruit.getImageId());
+            fruit_name.setText(fruit.getName());
+            return view;
+        }
     }
 }
