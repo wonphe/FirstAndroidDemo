@@ -65,25 +65,35 @@ public class FruitActivity extends AppCompatActivity {
     private class FruitAdapter extends ArrayAdapter<Fruit> {
         private int resourceId;
 
-        public FruitAdapter(Context context, int resource, List<Fruit> objects) {
+        FruitAdapter(Context context, int resource, List<Fruit> objects) {
             super(context, resource, objects);
             resourceId = resource;
         }
 
+        @NonNull
         @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
+        public View getView(int position, View convertView, @NonNull ViewGroup parent) {
             Fruit fruit = getItem(position);
             View view;
+            ViewHolder viewHolder;
             if (convertView == null) {
                 view = LayoutInflater.from(getContext()).inflate(resourceId, null);
+                viewHolder = new ViewHolder();
+                viewHolder.fruitImage = view.findViewById(R.id.fruit_image);
+                viewHolder.fruitName = view.findViewById(R.id.fruit_name);
+                view.setTag(viewHolder);
             } else {
                 view = convertView;
+                viewHolder = (ViewHolder) view.getTag();
             }
-            ImageView fruit_image = view.findViewById(R.id.fruit_image);
-            TextView fruit_name = view.findViewById(R.id.fruit_name);
-            fruit_image.setImageResource(fruit.getImageId());
-            fruit_name.setText(fruit.getName());
+            viewHolder.fruitImage.setImageResource(fruit.getImageId());
+            viewHolder.fruitName.setText(fruit.getName());
             return view;
+        }
+
+        private class ViewHolder {
+            ImageView fruitImage;
+            TextView fruitName;
         }
     }
 }
