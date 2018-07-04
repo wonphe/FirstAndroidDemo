@@ -87,11 +87,13 @@ public class FruitRecyclerActivity extends AppCompatActivity {
         }
 
         class ViewHolder extends RecyclerView.ViewHolder {
+            View fruitView;
             ImageView fruitImage;
             TextView fruitName;
 
             ViewHolder(View itemView) {
                 super(itemView);
+                fruitView = itemView;
                 fruitImage = itemView.findViewById(R.id.fruit_image);
                 fruitName = itemView.findViewById(R.id.fruit_name);
             }
@@ -105,10 +107,24 @@ public class FruitRecyclerActivity extends AppCompatActivity {
         }
 
         @Override
-        public void onBindViewHolder(ViewHolder holder, int position) {
-            Fruit fruit = mFruitList.get(position);
+        public void onBindViewHolder(ViewHolder holder, final int position) {
+            final Fruit fruit = mFruitList.get(position);
             holder.fruitImage.setImageResource(fruit.getImageId());
             holder.fruitName.setText(fruit.getName());
+            holder.fruitView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(v.getContext(), "you clicked view " + fruit.getName(),
+                            Toast.LENGTH_LONG).show();
+                }
+            });
+            holder.fruitImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(v.getContext(), "you clicked image " + fruit.getName(),
+                            Toast.LENGTH_LONG).show();
+                }
+            });
         }
 
         @Override
