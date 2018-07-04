@@ -36,7 +36,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".FruitActivity" />
-        <activity android:name=".FruitRecyclerActivity"/>
+        <activity android:name=".FruitRecyclerActivity" />
+        <activity android:name=".ChatActivity"></activity>
     </application>
 
 </manifest>
