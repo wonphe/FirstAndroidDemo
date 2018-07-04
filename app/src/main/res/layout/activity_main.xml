@@ -26,6 +26,12 @@
         android:id="@+id/btn_fruit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="水果列表" />
+        android:text="水果ListView" />
+
+    <Button
+        android:id="@+id/btn_fruit_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="水果RecyclerView" />
 
 </LinearLayout>

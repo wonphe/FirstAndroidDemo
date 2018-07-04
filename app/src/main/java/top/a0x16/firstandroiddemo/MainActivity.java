@@ -57,7 +57,16 @@ public class MainActivity extends AppCompatActivity {
         btn_fruit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, FruitActivity.class);
+                Intent intent = new Intent(getApplicationContext(), FruitActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button btn_fruit_recycler = findViewById(R.id.btn_fruit_recycler);
+        btn_fruit_recycler.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), FruitRecyclerActivity.class);
                 startActivity(intent);
             }
         });

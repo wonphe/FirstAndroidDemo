@@ -35,7 +35,8 @@
                 <data android:scheme="https" />
             </intent-filter>
         </activity>
-        <activity android:name=".FruitActivity"/>
+        <activity android:name=".FruitActivity" />
+        <activity android:name=".FruitRecyclerActivity"/>
     </application>
 
 </manifest>
