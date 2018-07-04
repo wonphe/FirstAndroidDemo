@@ -32,7 +32,9 @@ public class FruitRecyclerActivity extends AppCompatActivity {
         initFruitList();
         FruitAdapter adapter = new FruitAdapter(fruitList);
         RecyclerView recycler_view = findViewById(R.id.recycler_view);
-        recycler_view.setLayoutManager(new LinearLayoutManager(this));
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        recycler_view.setLayoutManager(layoutManager);
         recycler_view.setAdapter(adapter);
     }
 
